@@ -207,7 +207,6 @@ function finaleMailAbschicken(){
   const datum=document.getElementById('datum').value;
   const zeit=document.getElementById('zeit').value;
   const ereignis=document.getElementById('ereignis').value;
-  const empfaenger="marco.wueest@lu.ch";
   const betreff=`Personendaten ${datum} - ${ereignis}`;
   let mailBody=`Datum: ${datum}\nZeit: ${zeit}\nEreignis: ${ereignis}\n\nErfasste Personen:\n\n`;
   alleDaten.forEach((p,i)=>{
@@ -227,7 +226,8 @@ function finaleMailAbschicken(){
     }
     mailBody+=`Telefonnummer: ${p.telefonnummer}\nNotizen: ${p.notizen}\n\n`;
   });
-  window.location.href=`mailto:${encodeURIComponent(betreff)}&body=${encodeURIComponent(mailBody)}`;
+  window.location.href =
+  `mailto:?subject=${encodeURIComponent(betreff)}&body=${encodeURIComponent(mailBody)}`;
 }
 
 neuesFormular();
